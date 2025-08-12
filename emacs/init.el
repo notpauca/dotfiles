@@ -21,12 +21,12 @@
 ;; (global-set-key (kbd "C-M-n") #'spotify-next)
 ;; (global-set-key (kbd "C-M-b") #'spotify-previous)
 
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-
-
 (if (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
                 (load-theme 'ample-flat t)))
     (load-theme 'ample-flat t))
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(undecorated . t))
