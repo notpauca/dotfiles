@@ -2,6 +2,8 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
+(load "~/.config/emacs/keys.el")
+
 (global-display-line-numbers-mode 1)
 
 ;;Custom file
@@ -15,12 +17,6 @@
 (package-initialize)
 
 
-
-;; Spotify controls
-;; (global-set-key (kbd "C-M-p") #'spotify-playpause)
-;; (global-set-key (kbd "C-M-n") #'spotify-next)
-;; (global-set-key (kbd "C-M-b") #'spotify-previous)
-
 (if (daemonp)
     (add-hook 'after-make-frame-functions
               (lambda (frame)
@@ -30,3 +26,12 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(alpha-background . 90))
 (add-to-list 'default-frame-alist '(undecorated . t))
+
+
+;; Spotify
+(use-package counsel-spotify)
+
+Spotify controls
+(global-set-key (kbd "C-M-p") #'counsel-spotify-toggle-play-pause)
+(global-set-key (kbd "C-M-n") #'counsel-spotify-next)
+(global-set-key (kbd "C-M-b") #'counsel-spotify-previous)

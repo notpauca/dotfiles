@@ -10,8 +10,8 @@
      "0ed3d96a506b89c1029a1ed904b11b5adcebeb2e0c16098c99c0ad95cb124729"
      default))
  '(package-selected-packages
-   '(ample-theme async company dash flycheck lsp-mode lsp-ui magit rustic
-		 spotify)))
+   '(ample-theme async company counsel-spotify dash flycheck lsp-mode
+		 lsp-ui magit rustic)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
