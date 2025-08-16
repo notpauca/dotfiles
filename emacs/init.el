@@ -32,6 +32,6 @@
 (use-package counsel-spotify)
 
 Spotify controls
-(global-set-key (kbd "C-M-p") #'counsel-spotify-toggle-play-pause)
-(global-set-key (kbd "C-M-n") #'counsel-spotify-next)
-(global-set-key (kbd "C-M-b") #'counsel-spotify-previous)
+(global-set-key (kbd "C-M-P") #'counsel-spotify-toggle-play-pause)
+(global-set-key (kbd "C-M-N") #'counsel-spotify-next)
+(global-set-key (kbd "C-M-B") #'counsel-spotify-previous)
