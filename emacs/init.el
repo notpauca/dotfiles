@@ -1,15 +1,25 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(ido-mode 1)
+(ido-everywhere 1)
 
-(load "~/.config/emacs/keys.el")
+(setq-default tab-width 4
+	      custom-file (concat user-emacs-directory "custom.el")
+	      make-backups nil)
+
+(when (file-exists-p custom-file)
+  (load custom-file))
+
+(when (file-exists-p key-file)
+  (load key-file))
+
+(use-package smex)
+(global-set-key (kbd "M-x") 'smex)
 
 (global-display-line-numbers-mode 1)
 
-;;Custom file
-(setq custom-file (concat user-emacs-directory "custom.el"))
-(when (file-exists-p custom-file)
-  (load custom-file))
+(add-to-list 'default-frame-alist '(font . "Jetbrains Mono-12"))
 
 ;; Melpa
 (require 'package)
@@ -27,11 +37,25 @@
 (add-to-list 'default-frame-alist '(alpha-background . 90))
 (add-to-list 'default-frame-alist '(undecorated . t))
 
+;; LSP
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c C-l")
+  :config
+  (lsp-enable-which-key-integration t))
 
-;; Spotify
-(use-package counsel-spotify)
+;; Moving lines
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (previous-line 2))
 
-Spotify controls
-(global-set-key (kbd "C-M-P") #'counsel-spotify-toggle-play-pause)
-(global-set-key (kbd "C-M-N") #'counsel-spotify-next)
-(global-set-key (kbd "C-M-B") #'counsel-spotify-previous)
+(defun move-line-down ()
+  (interactive)
+  (next-line 1)
+  (transpose-lines 1)
+  (previous-line 1))
+
+(global-set-key [(control shift up)] 'move-line-up)
+(global-set-key [(control shift down)] 'move-line-down)
