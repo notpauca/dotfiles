@@ -11,9 +11,6 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(when (file-exists-p key-file)
-  (load key-file))
-
 (use-package smex)
 (global-set-key (kbd "M-x") 'smex)
 
@@ -59,3 +56,14 @@
 
 (global-set-key [(control shift up)] 'move-line-up)
 (global-set-key [(control shift down)] 'move-line-down)
+
+;; EMMS
+(emms-all)
+(setq-default emms-player-list '(emms-player-mpv)
+			  emms-source-file-default-directory "~/Musik/"
+			  emms-player-mpv-parameters '("--quiet" "--really-quiet" "--no-audio-display" "--force-window=no" "--vo=null")
+			  emms-volume-change-function 'emms-volume-mpv-change
+			  emms-info-functions '(emms-info-native emms-info-native emms-info-cueinfo)
+			  emms-browser-covers 'emms-browser-cache-thumbnail-async
+			  emms-browser-thumbnail-small-size 64)
+;;TODO: fix album covers? 
